@@ -1,5 +1,7 @@
 package com.example.beautysalon.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -20,6 +22,7 @@ public class SalonService {
     @OneToMany(mappedBy = "salonService")
     private Set<Employee> employees;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "salonService")
     private Set<Appointment> appointments;
 

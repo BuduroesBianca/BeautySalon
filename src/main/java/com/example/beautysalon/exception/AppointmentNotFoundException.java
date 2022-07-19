@@ -3,6 +3,7 @@ package com.example.beautysalon.exception;
 import com.example.beautysalon.model.Employee;
 import com.example.beautysalon.model.SalonService;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class AppointmentNotFoundException extends RuntimeException {
@@ -19,7 +20,7 @@ public class AppointmentNotFoundException extends RuntimeException {
         super("There are no appointments at stylist " + employee.getEmail());
     }
 
-    public AppointmentNotFoundException(Date date) {
+    public AppointmentNotFoundException(LocalDate date) {
         super("Could not find appointments on " + date.toString());
     }
 }

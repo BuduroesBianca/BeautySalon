@@ -35,6 +35,7 @@ public class Employee {
     @JoinColumn(name="service_id", nullable=false)
     private SalonService salonService;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "employee")
     private Set<Appointment> appointments;
 

@@ -46,4 +46,10 @@ public class ControllerAdvice {
         return e.getMessage();
     }
 
+    @ResponseBody
+    @ExceptionHandler(CustomerNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    String customerNotFoundHandler(CustomerNotFoundException e) {
+        return e.getMessage();
+    }
 }

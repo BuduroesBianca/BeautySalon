@@ -1,7 +1,10 @@
 package com.example.beautysalon.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.sql.Time;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -13,7 +16,7 @@ public class Appointment {
     private Long appointmentId;
 
     @Column(name = "date")
-    private Date date; // format MM/DD/YYYY
+    private LocalDate date; // format MM/DD/YYYY
 
     @Column(name = "hour")
     private Time hour; // format HH:mm
@@ -21,13 +24,16 @@ public class Appointment {
     @Column(name = "duration")
     private Integer duration; // minutes
 
+
     @ManyToOne
     @JoinColumn(name="employee_id", nullable=false)
     private Employee employee;
 
+
     @ManyToOne
     @JoinColumn(name="customer_id", nullable=false)
     private Customer customer;
+
 
     @ManyToOne
     @JoinColumn(name="service_id", nullable=false)
@@ -38,6 +44,14 @@ public class Appointment {
 
     public String getState() {
         return state;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     public void setState(String state) {
@@ -52,13 +66,7 @@ public class Appointment {
         this.appointmentId = appointmentId;
     }
 
-    public Date getDate() {
-        return date;
-    }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
 
     public Date getHour() {
         return hour;
