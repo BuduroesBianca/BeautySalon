@@ -11,6 +11,7 @@ import java.util.Collections;
 
 public class AppUserDetails implements UserDetails {
 
+
     private User user;
 
     public AppUserDetails(User user) {

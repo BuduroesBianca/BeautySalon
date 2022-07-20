@@ -17,6 +17,7 @@ public class AppUserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        System.out.println(username);
         Optional<User> user = userRepository.findUserByEmail(username);
         if(user.isPresent()) {
             return new AppUserDetails(user.get());

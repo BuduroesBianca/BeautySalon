@@ -77,6 +77,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 
         SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
         long ms = 0;
+
         try {
             ms = sdf.parse(hour).getTime();
         } catch (Exception e) {
@@ -100,7 +101,6 @@ public class AppointmentServiceImpl implements AppointmentService {
         appointment.setDuration(duration);
 
         appointmentRepository.save(appointment);
-
 
     }
 

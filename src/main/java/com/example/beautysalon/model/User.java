@@ -8,8 +8,6 @@ import java.util.Set;
 @Table(name = "user")
 public class User {
 
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
@@ -26,6 +24,8 @@ public class User {
     @ManyToOne
     @JoinColumn(name="role_id", nullable=false)
     private Role role;
+
+    public User() {}
 
     public User(String email, String password, boolean enabled, Role role) {
         this.email = email;
