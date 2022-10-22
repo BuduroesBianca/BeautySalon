@@ -52,7 +52,6 @@ public class SalonServiceServiceImpl implements SalonServiceService {
     public SalonService updateSalonService(Long serviceId, SalonService salonService) {
            SalonService updatedSalonService = salonServiceRepository.findById(serviceId).orElseThrow(() -> new SalonServiceNotFoundException(serviceId));
 
-           updatedSalonService.setServiceId(serviceId);
            updatedSalonService.setName(salonService.getName() == null ? updatedSalonService.getName() : salonService.getName());
            updatedSalonService.setPrice(salonService.getPrice() == null ? updatedSalonService.getPrice() : salonService.getPrice());
 

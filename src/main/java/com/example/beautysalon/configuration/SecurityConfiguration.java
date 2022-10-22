@@ -43,6 +43,7 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((auth) -> auth
+                        .antMatchers("/home").authenticated()
                         .antMatchers("/register-customer").permitAll()
                         .antMatchers("/register-employee").permitAll()
                         .antMatchers("/admin/**").hasAuthority("ADMIN")

@@ -1,10 +1,15 @@
 package com.example.beautysalon.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
-
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "salon_services")
 public class SalonService {
@@ -19,6 +24,7 @@ public class SalonService {
     @Column(name = "price")
     private Double price;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "salonService")
     private Set<Employee> employees;
 

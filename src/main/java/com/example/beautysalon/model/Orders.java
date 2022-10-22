@@ -1,12 +1,10 @@
 package com.example.beautysalon.model;
 
-import org.springframework.stereotype.Controller;
-
 import javax.persistence.*;
 
 @Entity
 @Table(name = "orders")
-public class Order {
+public class Orders {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +22,33 @@ public class Order {
     private Customer customer;
 
     @Column(name = "quantity")
-    private Integer quantity;
+    private Long quantity;
+
+    public Orders(Long serviceId, String state, Customer customer, Long quantity) {
+        this.serviceId = serviceId;
+        this.state = state;
+        this.customer = customer;
+        this.quantity = quantity;
+    }
+
+    public Orders() {
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Long getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Long quantity) {
+        this.quantity = quantity;
+    }
 
     public Long getOrderId() {
         return orderId;

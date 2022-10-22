@@ -24,7 +24,7 @@ public class Scheduler {
     @Autowired
     EmailServiceImpl emailService;
 
-    @Scheduled(cron = "0 0 8 * * *") // task executed everyday at 8 AM
+    @Scheduled(cron = "0 37 11 * * *") // task executed everyday at 8 AM
     public void scheduleTaskUsingCronExpression() {
 
         LocalDate now = LocalDate.now();

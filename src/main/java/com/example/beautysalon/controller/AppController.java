@@ -24,7 +24,7 @@ public class AppController {
     @Autowired
     UserRepository userRepository;
 
-    @GetMapping("")
+    @GetMapping("/home")
     public ModelAndView testController() {
         ModelAndView model = new ModelAndView("test");
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();

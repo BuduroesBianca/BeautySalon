@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:8080")
 @RestController
 public class ServicesController {
 
@@ -18,9 +17,9 @@ public class ServicesController {
     SalonServiceService salonServiceService;
 
     @PostMapping("/salon-services")
-    public ResponseEntity<SalonService> addSalonService(@RequestBody SalonService salonService) {
-        salonServiceService.addSalonService(salonService);
-        return new ResponseEntity<>(HttpStatus.OK);
+    @ResponseStatus(HttpStatus.CREATED)
+    public SalonService addSalonService(@RequestBody SalonService salonService) {
+        return salonServiceService.addSalonService(salonService);
     }
 
     @GetMapping("/salon-services")

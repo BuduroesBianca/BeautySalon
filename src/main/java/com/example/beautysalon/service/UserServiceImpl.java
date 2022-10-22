@@ -5,6 +5,10 @@ import com.example.beautysalon.exception.SalonServiceNotFoundException;
 import com.example.beautysalon.exception.UsernameAlreadyExistsException;
 import com.example.beautysalon.model.*;
 import com.example.beautysalon.repository.*;
+import lombok.Builder;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+import lombok.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -13,22 +17,25 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
+//@Data
+//@Value
+//@Builder(toBuilder = true)
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final CustomerRepository customerRepository;
     private final EmployeeRepository employeeRepository;
-
     private final SalonServiceRepository salonServiceRepository;
 
-    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, CustomerRepository customerRepository, EmployeeRepository employeeRepository,SalonServiceRepository salonServiceRepository) {
-        this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
-        this.customerRepository = customerRepository;
-        this.employeeRepository = employeeRepository;
-        this.salonServiceRepository = salonServiceRepository;
-    }
+//    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, CustomerRepository customerRepository, EmployeeRepository employeeRepository,SalonServiceRepository salonServiceRepository) {
+//        this.userRepository = userRepository;
+//        this.roleRepository = roleRepository;
+//        this.customerRepository = customerRepository;
+//        this.employeeRepository = employeeRepository;
+//        this.salonServiceRepository = salonServiceRepository;
+//    }
 
 //    @Override
 //    public ResponseEntity<String> saveUser(User user, Role role) {

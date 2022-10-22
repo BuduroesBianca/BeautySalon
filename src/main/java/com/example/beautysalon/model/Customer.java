@@ -21,6 +21,10 @@ public class Customer {
     @OneToMany(mappedBy = "customer")
     private Set<Appointment> appointments;
 
+        @JsonIgnore
+    @OneToMany(mappedBy = "customer")
+    private Set<Orders> orders;
+
     @Column(name = "first_name")
     private String firstName;
 

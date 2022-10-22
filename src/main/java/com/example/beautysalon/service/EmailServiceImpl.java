@@ -1,6 +1,7 @@
 package com.example.beautysalon.service;
 
 import com.example.beautysalon.model.Appointment;
+import com.paypal.api.payments.Payment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -20,6 +21,29 @@ public class EmailServiceImpl {
         message.setSubject("Beauty Salon Appointment Reminder");
         message.setText(text);
         emailSender.send(message);
+    }
+
+    public void sendPaymentInfo(String to, String text) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(to);
+        message.setSubject("Payment successful - Beauty Salon");
+        message.setText(text);
+        emailSender.send(message);
+    }
+
+    public void sendCustomEmail(String to, String text, String subject) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(to);
+        message.setSubject(subject);
+        message.setText(text);
+        emailSender.send(message);
+    }
+
+    public String composePaymentMessage(Payment payment, String firstName) {
+        String text = "Hello " + firstName + "!\n";
+        text += "Your order with ID " + payment.getId() + " was approved.\n";
+
+        return text;
     }
 
     public String composeSimpleMessage(Appointment appointment) {

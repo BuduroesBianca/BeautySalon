@@ -52,4 +52,11 @@ public class ControllerAdvice {
     String customerNotFoundHandler(CustomerNotFoundException e) {
         return e.getMessage();
     }
+
+    @ResponseBody
+    @ExceptionHandler(OrderNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    String orderNotFoundHandler(OrderNotFoundException e) {
+        return e.getMessage();
+    }
 }

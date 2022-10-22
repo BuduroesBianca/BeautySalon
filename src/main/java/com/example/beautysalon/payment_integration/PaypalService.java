@@ -1,5 +1,6 @@
 package com.example.beautysalon.payment_integration;
 
+import com.example.beautysalon.model.Orders;
 import com.paypal.api.payments.*;
 import com.paypal.base.rest.APIContext;
 import com.paypal.base.rest.PayPalRESTException;
@@ -21,8 +22,6 @@ public class PaypalService {
             Double total,
             String currency,
             String method,
-            String intent,
-            String description,
             String cancelUrl,
             String successUrl) throws PayPalRESTException{
         Amount amount = new Amount();
@@ -31,7 +30,6 @@ public class PaypalService {
         amount.setTotal(String.format("%.2f", total));
 
         Transaction transaction = new Transaction();
-        transaction.setDescription(description);
         transaction.setAmount(amount);
 
         List<Transaction> transactions = new ArrayList<>();
@@ -41,7 +39,7 @@ public class PaypalService {
         payer.setPaymentMethod(method.toString());
 
         Payment payment = new Payment();
-        payment.setIntent(intent.toString());
+        payment.setIntent("sale");
         payment.setPayer(payer);
         payment.setTransactions(transactions);
         RedirectUrls redirectUrls = new RedirectUrls();
